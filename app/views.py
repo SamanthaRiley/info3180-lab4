@@ -9,6 +9,7 @@ This file creates your application.
 from app import app
 import os
 from flask import session,flash,render_template, request, redirect, url_for
+from flask import Flask 
 USERNAME="admin"
 PASSWORD="naseberry"
 SECRET_KEY="super secure key"
@@ -43,7 +44,7 @@ def add_entry():
     title = request.form['title']
     file = request.files['file']
     filename = file.filename
-    file.save(os.path.join("filefolder", filename))
+    file.save(os.path.join("static/uploads", filename))
     return render_template("files.html",title=title)
     #g.db.execute('insert into entries (title, text) values (?, ?)',
     #             [title, filename])
